@@ -179,6 +179,16 @@ export function ModelsActionDialog() {
     [form, isEdit]
   );
 
+  // 用户直接在输入框键入时实时同步 form 值，避免 blur/submit 竞态导致提交旧值
+  const handleModelIdSearchChange = useCallback(
+    (value: string) => {
+      setModelIdSearchValue(value);
+      setModelIdInput(value);
+      form.setValue('modelID', value);
+    },
+    [form]
+  );
+
   const handleModelIdChange = useCallback(
     (modelId: string) => {
       setModelIdInput(modelId);
@@ -313,7 +323,7 @@ export function ModelsActionDialog() {
                               selectedValue={modelIdInput}
                               onSelectedValueChange={handleModelIdChange}
                               searchValue={modelIdSearchValue}
-                              onSearchValueChange={setModelIdSearchValue}
+                              onSearchValueChange={handleModelIdSearchChange}
                               items={modelIdOptions}
                               placeholder={t('models.fields.modelIdPlaceholder')}
                               emptyMessage={t('models.fields.noModels')}
@@ -324,7 +334,7 @@ export function ModelsActionDialog() {
                               selectedValue={modelIdInput}
                               onSelectedValueChange={handleModelIdChange}
                               searchValue={modelIdSearchValue}
-                              onSearchValueChange={setModelIdSearchValue}
+                              onSearchValueChange={handleModelIdSearchChange}
                               items={[]}
                               placeholder={t('models.fields.modelIdPlaceholder')}
                               emptyMessage={t('models.fields.noModels')}

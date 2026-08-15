@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { graphqlRequest, GraphQLRequestError } from '@/gql/graphql';
 import { toast } from 'sonner';
 import { getTokenFromStorage } from '@/stores/authStore';
@@ -469,6 +469,7 @@ export function useBrandSettings(options?: { enabled?: boolean }) {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -488,6 +489,7 @@ export function useStoragePolicy() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -565,6 +567,7 @@ export function useRetryPolicy() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -600,6 +603,7 @@ export function useWebhookNotifierConfig() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -637,6 +641,7 @@ export function useDefaultDataStorageID() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1001,6 +1006,7 @@ export function useModelSettings() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1075,6 +1081,7 @@ export function useChannelSetting(options?: { enabled?: boolean }) {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1153,6 +1160,7 @@ export function useVideoStorageSettings() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1190,6 +1198,7 @@ export function useSecuritySettings() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1422,6 +1431,7 @@ export function useAutoBackupSettings() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1519,6 +1529,7 @@ export function useProxyPresets() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1595,6 +1606,7 @@ export function useUserAgentPassThroughSettings() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1653,6 +1665,7 @@ export function usePassThroughSettings() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1720,6 +1733,7 @@ export function useQuotaEnforcementSettings() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
@@ -1792,6 +1806,7 @@ export function useProviderQuotaCollectionSettings() {
         throw error;
       }
     },
+    placeholderData: keepPreviousData,
   });
 }
 
